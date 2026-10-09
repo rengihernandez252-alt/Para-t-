@@ -3,19 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<title>Para ti ❤️</title>
 <style>
-  body{margin:0;background:#000;color:#fff;font-family:'Playfair Display',serif;overflow:hidden;height:100vh;display:flex;justify-content:center;align-items:center;text-align:center}
-  .page{position:absolute;width:90%;max-width:400px;opacity:0;pointer-events:none;transition:opacity 0.8s ease;z-index:2}
-  .page.active{opacity:1;pointer-events:auto}
-  h1{font-weight:400;font-size:1.4rem;letter-spacing:1px;line-height:1.5}
-  .pink{font-family:'Great Vibes',cursive;color:#ff8fab;font-size:2.1rem;line-height:1.3;margin:15px 0;display:block;text-shadow:0 0 10px #ff4d8d}
-  .btn{border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.08);backdrop-filter:blur(10px);color:#fff;padding:12px 28px;border-radius:30px;font-size:0.8rem;letter-spacing:2px;margin-top:25px;cursor:pointer}
-  .btn-rosa{background:#ff2e7a;color:white;border:none;font-weight:bold;font-size:1.1rem;box-shadow:0 0 20px #ff2e7a;padding:14px 40px}
-  .btn-group{margin-top:20px;display:flex;gap:15px;justify-content:center;align-items:center;position:relative;height:80px}
-  #noBtn{position:absolute;transition:all 0.2s ease}
-  .small{font-size:0.55rem;opacity:0.35;margin-top:30px;letter-spacing:1px}
-  .hearts{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
-  .heart{position:absolute;animation:fall linear infinite;color:#ff8fab;opacity:0.8}
-  @keyframes fall{0%{transform:translateY(-10vh) rotate(0deg) scale(0.5);opacity:1}100%
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:#fff0f3;overflow:hidden;height:100vh;display:flex;align-items:center;justify-content:center}
+.page{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;width:100%;height:100vh;animation:fade .6s}
+.page.active{display:flex}
+h1{font-size:2rem;color:#ff4d6d;margin-bottom:15px}
+p{font-size:1.1rem;color:#555;max-width:350px;line-height:1.5}
+.btn{margin-top:25px;background:#ff4d6d;color:white;border:none;padding:12px 28px;border-radius:30px;font-size:1.1rem;cursor:pointer;box-shadow:0 5px 15px rgba(255,77,109,.4)}
+.hearts{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+.heart{position:absolute;animation:float 5s linear infinite}
+@keyframes float{0%{transform:translateY(100vh)}100%{transform:translateY(-10vh) rotate(360deg)}}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+#noBtn{position:absolute;transition:.2s}
+</style>
+</head>
+<body>
+<div class="hearts" id="hearts"></div>
+
+<div class="page active" id="p1">
+<h1>Hola amor ❤️</h1>
+<p>Hice esta paginita solo para ti, porque eres muy especial para mi.</p>
+<button class="btn" onclick="next(2)">Siguiente 💌</button>
+</div>
+
+<div class="page" id="p2">
+<h1>Eres increíble ✨</h1>
+<p>Desde que llegaste todo es más bonito. Me encanta hablar contigo, reír contigo y soñar contigo.</p>
+<button class="btn" onclick="next(3)">Siguiente 🥺</button>
+</div>
+
+<div class="page" id="p3">
+<h1>Quiero decirte algo muy importante</h1>
+<p>Me gustas muchísimo, más de lo que te imaginas...</p>
+<button class="btn" onclick="next(4)">¿Qué? 👉</button>
+</div>
+
+<div class="page" id="p4" style="position:relative">
+<h1>¿Quieres ser mi novia? 💖</h1>
+<p>No imagino un no, pero por si acaso...</p>
+<div style="margin-top:30px;display:flex;gap:15px;position:relative;width:250px;height:100px;justify-content:center">
+<button class="btn" onclick="si()" id="yesBtn">¡Sí! 😍</button>
+<button class="btn" style="background:#adb5bd" id="noBtn" onmouseover="mover()" onclick="mover()">No 🙈</button>
+</div>
+</div>
+
+<div class="page" id="p5">
+<h1>¡Sabía que dirías que sí! 💘</h1>
+<p>Me hiciste el más feliz del mundo. Te amo muchísimo.</p>
+<p style="margin-top:15px;font-weight:bold">- Para ti, con todo mi corazón</p>
+</div>
+
+<script>
+function next(n){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById('p'+n).classList.add('active');
+}
+function mover(){
+let btn=document.getElementById('noBtn');
+btn.style.left=Math.random()*200+'px';
+btn.style.top=Math.random()*200+'px';
+}
+function si(){next(5); lanzarCorazones()}
+function lanzarCorazones(){
+setInterval(()=>{
+let h=document.createElement('div');
+h.className='heart';
+h.innerHTML='❤️';
+h.style.left=Math.random()*100+'vw';
+h.style.fontSize=(Math.random()*20+15)+'px';
+document.getElementById('hearts').appendChild(h);
+setTimeout(()=>h.remove(),5000);
+},200)
+}
+lanzarCorazones();
+</script>
+</body>
+</html>
