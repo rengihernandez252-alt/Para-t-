@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#000;color:#fff;font-family:'Playfair Display',serif;overflow:hidden;height:100vh;display:flex;justify-content:center;align-items:center;text-align:center}
+  .page{position:absolute;width:90%;max-width:400px;opacity:0;pointer-events:none;transition:opacity 0.8s ease;z-index:2}
+  .page.active{opacity:1;pointer-events:auto}
+  h1{font-weight:400;font-size:1.4rem;letter-spacing:1px;line-height:1.5}
+  .pink{font-family:'Great Vibes',cursive;color:#ff8fab;font-size:2.1rem;line-height:1.3;margin:15px 0;display:block;text-shadow:0 0 10px #ff4d8d}
+  .btn{border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.08);backdrop-filter:blur(10px);color:#fff;padding:12px 28px;border-radius:30px;font-size:0.8rem;letter-spacing:2px;margin-top:25px;cursor:pointer}
+  .btn-rosa{background:#ff2e7a;color:white;border:none;font-weight:bold;font-size:1.1rem;box-shadow:0 0 20px #ff2e7a;padding:14px 40px}
+  .btn-group{margin-top:20px;display:flex;gap:15px;justify-content:center;align-items:center;position:relative;height:80px}
+  #noBtn{position:absolute;transition:all 0.2s ease}
+  .small{font-size:0.55rem;opacity:0.35;margin-top:30px;letter-spacing:1px}
+  .hearts{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
+  .heart{position:absolute;animation:fall linear infinite;color:#ff8fab;opacity:0.8}
+  @keyframes fall{0%{transform:translateY(-10vh) rotate(0deg) scale(0.5);opacity:1}100%
