@@ -3,12 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Para ti</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100vh;background:linear-gradient(135deg,#ffe6f0 0%,#ffd1e8 25%,#ffb3d9 50%,#ff8fab 100%);display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;overflow:hidden;position:relative}
-.hearts{position:absolute;inset:0;pointer-events:none}
-.heart{position:absolute;animation:float 6s infinite ease-in-out;opacity:0.7}
-@keyframes float{0%{transform:translateY(110vh) rotate(0deg) scale(.8);opacity:0}20%{opacity:.8}100%{transform:translateY(-10vh) rotate(360deg) scale(1.2);opacity:0}}
-.card{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);width:92%;max-width:420px;border-radius:32px;padding:38px 28px 32px;text-align:center;box-shadow:0 20px 60
+body{background:#050505;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-family:serif}
+.card{max-width:450px;width:100%}
+h2{font-size:22px;color:#e5e5e5;margin-bottom:16px}
+.pink{color:#ff8ab8;font-size:30px;font-family:cursive;margin:16px 0}
+.strong{color:#ff2e7e;font-size:38px;font-family:cursive;font-weight:bold}
+button{padding:14px 28px;border-radius:30px;border:none;cursor:pointer;margin:8px}
+#si{background:#ff2e7e;color:#fff;font-weight:bold}
+#no{background:transparent;color:#888;border:1px solid #333}
+.hidden{font-size:11px;color:#444;margin-top:30px}
+</style>
+</head>
+<body>
+<div class="card" id="c1">
+<h2>En el silencio de mis tristes noches</h2>
+<p class="pink">Habia un vacio que aunque varias veces intente llenar, siempre aparecian grietas que no dejaban cerrarlo. Solo terminaba reprimiendo todo, mas y mas...</p>
+<button onclick="go(2)">SIGUE LEYENDO :3</button>
+</div>
+
+<div class="card" id="c2" style="display:none">
+<h2>Pero entonces apareciste tu</h2>
+<p class="pink">Como la calidez que necesitaba mi alma y el color que le faltaba a mi vida en un mundo gris de silencio, como un suspiro en medio de la tormenta.<br><br>Eres la melancolia mas bella que he decidido amar</p>
+<button onclick="go(3)">SIGUE LEYENDO...</button>
+</div>
+
+<div class="card" id="c3" style="display:none">
+<p> Aunque por el momento solo sean palabras...</p>
+<p class="pink" style="color:#fff">Quiero que seas mi realidad, mi calma y mi locura :3</p>
+<p class="strong">¿Quieres ser mi novia?</p>
+<div style="margin-top:20px">
+<button id="si" onclick="go(4)">SI, QUIERO</button>
+<button id="no" onclick="noClick()">No</button>
+</div>
+<p id="msgNo" style="color:#ff8ab8;margin-top:15px;height:20px"></p>
+<p class="hidden">Tengo una mansion en maicra</p>
+</div>
+
+<div class="card" id="c4" style="display:none">
+<p style="font-size:50px">💓</p>
+<p class="pink" style="font-size:36px">Te agradezco por decir que si :3</p>
+<p>No puedo prometerte que no habran dias dificiles o problemas, pero si te puedo prometer<br><br><span style="color:#ff8ab8">que pase lo que pase, no tendras que enfrentarlos sola mientras yo este contigo.</span><br><br>Te quelo💓😻 y quiero seguir conociendo nuevas cosas contigo.</p>
+</div>
+
+<script>
+let intentos=0;
+function go(n){
+ document.querySelectorAll('.card').forEach(c=>c.style.display='none');
+ document.getElementById('c'+n).style.display='block';
+}
+function noClick(){
+ intentos++;
+ const frases=["Segura? :(","Piénsalo bien :(","No hay vuelta atras jaja","Ultima oportunidad","Bueno, te regreso al inicio..."];
+ document.getElementById('msgNo').innerText=frases[intentos-1];
+ if(intentos>=5){
+   setTimeout(()=>{intentos=0;document.getElementById('msgNo').innerText="";go(1)},1500);
+ }
+}
+</script>
+</body>
+</html>
